@@ -5,8 +5,7 @@ from eth_account.messages import encode_defunct
 
 def sign(m):
     w3 = Web3()
-    account = eth_account.Account.create()
-    eth_address, private_key = create_ethereum_account()
+    private_key, eth_address = create_ethereum_account()
     message_encoded = encode_defunct(text=m)
     signed_message = w3.eth.account.sign_message(message_encoded, private_key)
     assert isinstance(signed_message, eth_account.datastructures.SignedMessage)
